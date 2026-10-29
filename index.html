@@ -1,0 +1,143 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>ChessRank Widget</title>
+  <link rel="stylesheet" href="widget.css">
+</head>
+<body>
+  <!-- MAIN COMPACT WIDGET (70% Smaller: 200px x 92px) -->
+  <div class="widget-viewport" id="widgetViewport">
+    <div class="card-face card-front" id="cardFront" title="Drag to move widget">
+      
+      <!-- Left: Crystal Emerald Knight -->
+      <div class="knight-section" id="knightSection">
+        <img src="assets/card_left.png" alt="Knight" class="knight-image" id="knightImg">
+      </div>
+
+      <!-- Right: Stats & Progress -->
+      <div class="stats-section">
+        
+        <!-- Controls & Header -->
+        <div class="header-row">
+          <span class="username-text" id="usernameDisplay" title="Chess.com Username">GRANDMASTER_USER</span>
+          <span class="mode-badge" id="modeBadge">RAPID</span>
+          <button class="icon-btn" id="btnSettings" title="Configure Widget (S)">⚙</button>
+        </div>
+
+        <!-- Rating Row -->
+        <div class="rating-row">
+          <div class="rating-number" id="ratingDisplay" title="Click to open Chess.com profile">2145</div>
+          
+          <div class="bubble-today" id="bubbleToday">
+            <span class="bubble-delta" id="deltaDisplay">+12</span>
+            <span class="bubble-label">Today</span>
+          </div>
+        </div>
+
+        <!-- Peak Row -->
+        <div class="peak-row">
+          <div class="peak-pill">
+            <div class="peak-badge">PEAK</div>
+            <div class="peak-value-group">
+              <span class="peak-number" id="peakDisplay">2210</span>
+              <span class="peak-subtext">(Max)</span>
+            </div>
+          </div>
+        </div>
+
+        <!-- Progress Row -->
+        <div class="progress-container">
+          <div class="progress-track" id="progressTrack">
+            <div class="progress-fill" id="progressFill" style="width: 63%;"></div>
+          </div>
+          <div class="progress-info">
+            <span id="progressCurrent">Goal 2200</span>
+            <span id="progressRemaining">55 to go</span>
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </div>
+
+  <!-- DEDICATED CONFIGURATION MODAL DIALOG (Always fully visible with prominent SAVE button) -->
+  <div class="modal-backdrop" id="modalBackdrop">
+    <div class="settings-modal" id="settingsModal">
+      
+      <div class="settings-header">
+        <div class="settings-title">
+          <span>Widget Configuration</span>
+          <span class="badge">CHESS.COM</span>
+        </div>
+        <button class="modal-close-btn" id="btnCloseModal" title="Close without saving">✕</button>
+      </div>
+
+      <div class="settings-body">
+        <div class="form-group">
+          <label for="inputUsername">Chess.com Username / Profile</label>
+          <input type="text" id="inputUsername" class="form-control" placeholder="e.g. GRANDMASTER_USER, hikaru" autocomplete="off">
+        </div>
+
+        <div class="form-row">
+          <div class="form-group" style="flex: 1;">
+            <label for="selectTimeControl">Game Mode (Rating)</label>
+            <select id="selectTimeControl" class="form-control">
+              <option value="chess_rapid">Rapid</option>
+              <option value="chess_blitz">Blitz</option>
+              <option value="chess_bullet">Bullet</option>
+              <option value="chess_daily">Daily</option>
+            </select>
+          </div>
+
+          <div class="form-group" style="flex: 1;">
+            <label for="selectRefreshInterval">Auto-Refresh</label>
+            <select id="selectRefreshInterval" class="form-control">
+              <option value="60">Every 1 minute</option>
+              <option value="300">Every 5 minutes</option>
+              <option value="900">Every 15 minutes</option>
+              <option value="1800" selected>Every 30 minutes</option>
+              <option value="0">Manual only</option>
+            </select>
+          </div>
+        </div>
+
+        <div class="form-row">
+          <div class="form-group" style="flex: 1;">
+            <label for="inputTargetRank">Target Goal Rank</label>
+            <input type="number" id="inputTargetRank" class="form-control" placeholder="e.g. 2200" min="100" max="4000" step="10">
+          </div>
+
+          <div class="form-group" style="flex: 1;">
+            <label for="inputBaselineRank">Baseline (Start of Bar)</label>
+            <input type="number" id="inputBaselineRank" class="form-control" placeholder="Auto or 2050" min="0" max="4000" step="10">
+          </div>
+        </div>
+
+        <div class="form-group checkbox-group">
+          <label class="checkbox-label">
+            <input type="checkbox" id="chkSound" checked>
+            Play audio chime on rating gain & goal reach
+          </label>
+        </div>
+
+        <!-- Success Toast Indicator -->
+        <div class="save-toast" id="saveToast">✓ Saved Successfully!</div>
+      </div>
+
+      <!-- PROMINENT FIXED SAVE FOOTER -->
+      <div class="settings-footer">
+        <button type="button" class="btn btn-secondary" id="btnResetDemo">Reset to Mockup</button>
+        <div style="display: flex; gap: 8px;">
+          <button type="button" class="btn btn-secondary" id="btnCancelModal">Cancel</button>
+          <button type="button" class="btn btn-primary" id="btnSaveConfig">💾 Save Changes</button>
+        </div>
+      </div>
+
+    </div>
+  </div>
+
+  <script src="widget.js"></script>
+</body>
+</html>

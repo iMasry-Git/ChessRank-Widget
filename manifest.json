@@ -1,0 +1,32 @@
+{
+  "manifest_version": 3,
+  "name": "ChessRank Widget",
+  "version": "3.1.0",
+  "description": "Windows 11 Native Desktop Widget for Chess.com live rating, peak historical stats, and goal progression tracking.",
+  "icons": {
+    "16": "icons/icon-16.png",
+    "32": "icons/icon-32.png",
+    "48": "icons/icon-48.png",
+    "128": "icons/icon-128.png"
+  },
+  "action": {
+    "default_title": "ChessRank Widget",
+    "default_popup": "index.html",
+    "default_icon": {
+      "16": "icons/icon-16.png",
+      "32": "icons/icon-32.png",
+      "48": "icons/icon-48.png",
+      "128": "icons/icon-128.png"
+    }
+  },
+  "permissions": [
+    "storage",
+    "alarms"
+  ],
+  "host_permissions": [
+    "https://api.chess.com/*"
+  ],
+  "background": {
+    "service_worker": "background.js"
+  }
+}

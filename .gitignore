@@ -1,0 +1,12 @@
+# OS generated
+Thumbs.db
+ehthumbs.db
+Desktop.ini
+$RECYCLE.BIN/
+
+# Temporary files
+*.tmp
+*.log
+*.bak
+
+# Build outputs (we can include ChessRankWidget.exe in releases, but let's check if user wants it in repo or release)
